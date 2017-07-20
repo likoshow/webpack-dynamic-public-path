@@ -13,8 +13,16 @@ Installation is easy with npm:
 Then require it in your webpack config and add it to a plugins section:
 
 ```javascript
+
+const PUBLIC_PATH = 'XXXYYYZZZ'
+output: {
+    // 这里只是设置了一个占位符，构建的时候会用 window.publicPath + "/" 替换掉的
+    // Set a string placeholder
+    publicPath: PUBLIC_PATH,
+},
 plugins: [
     new DynamicPublicPathPlugin({
+        placeholder: PUBLIC_PATH,
         publicPath: 'window.publicPath + "/"',
         outputPath: 'bundle'
     })
